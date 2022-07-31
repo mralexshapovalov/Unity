@@ -55,13 +55,14 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ObjectMoving.cs" />
     <Compile Include="Assets\Scripts\DestroyAll.cs" />
+    <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\PlanetAndBonus.cs" />
+    <Compile Include="Assets\Scripts\Player_health.cs" />
     <Compile Include="Assets\Scripts\RepeadingBG.cs" />
     <Compile Include="Assets\Scripts\FollowthePatch.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\Player_health.cs" />
-    <Compile Include="Assets\Scripts\Bullet.cs" />
+    <Compile Include="Assets\Scripts\PlayerShooting.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

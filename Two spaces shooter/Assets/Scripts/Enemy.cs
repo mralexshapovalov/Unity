@@ -8,6 +8,40 @@ public class Enemy : MonoBehaviour
     public int enemy_health;
 
 
+
+    [Space]
+    //The Bullet prefab to be spawned
+    public GameObject obj_Bullet;
+
+    //time interval within which the shot occurs 
+
+    public float shot_time_Min,shot_time_Max;
+
+    //the probability pf the enemy's shot;
+
+    public int shot_Chance;
+
+
+    private void Start()
+    {
+        //Call the OpenFire in the time interval between shot_Time_Min and shot_Time_Max
+
+        Invoke("OpenFire", Random.Range(shot_time_Min, shot_time_Max));
+    }
+    //Method openFire
+
+    private void OpenFire()
+    {
+        if(Random.value < (float)shot_Chance / 100)
+        {
+            //create an instance of the prefab obj_Bullet int the enemy possition and without rotation
+
+            Instantiate(obj_Bullet,transform.position,Quaternion.identity);
+        }
+    }
+
+
+
     //Method of taking damage by the enemy
 
     public void GetDamege (int damege)
