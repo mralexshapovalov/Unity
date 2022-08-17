@@ -53,6 +53,8 @@
     <UnityVersion>2020.3.25f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Wave.cs" />
+    <Compile Include="Assets\Scripts\PlayerShooting.cs" />
     <Compile Include="Assets\Scripts\ObjectMoving.cs" />
     <Compile Include="Assets\Scripts\DestroyAll.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
@@ -62,7 +64,7 @@
     <Compile Include="Assets\Scripts\RepeadingBG.cs" />
     <Compile Include="Assets\Scripts\FollowthePatch.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\PlayerShooting.cs" />
+    <Compile Include="Assets\Scripts\LevelController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

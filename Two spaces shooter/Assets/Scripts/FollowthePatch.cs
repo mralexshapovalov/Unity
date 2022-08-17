@@ -6,20 +6,20 @@ public class FollowthePatch : MonoBehaviour
 {
     //An array of waypoints along which the enemy moves in a wave 
 
-    public Transform[] path_points;
+    [HideInInspector]public Transform[] path_points;
 
     //The speed at which the enemy moves.
 
-    public float speed_Enemy;
+    [HideInInspector] public float speed_Enemy;
 
     //Destroy the surviving enemies at the end of the path or send then tj the beginning pf the path
 
-    public bool is_return;
+    [HideInInspector] public bool is_return;
 
 
     //Store Vector3 or all waypoints Bebug___________________________________________________________
 
-    public Vector3[] _new_Position;
+     [HideInInspector] public Vector3[] _new_Position;
 
     ///_________________________________
     ///
@@ -32,6 +32,9 @@ public class FollowthePatch : MonoBehaviour
     private void Start()
     {
         _new_Position = NewPositionByPath(path_points);
+        //Send the current opponent to the starting point
+
+        transform.position = _new_Position[0];
     }
 
     private void Update()
@@ -58,13 +61,32 @@ public class FollowthePatch : MonoBehaviour
     }
     Vector3[] NewPositionByPath(Transform[] pathPos)
     {
-        Vector3[] pathHositions = new Vector3[pathPos.Length];
+        Vector3[] pathPositions = new Vector3[pathPos.Length];
         for(int i = 0; i < pathPos.Length; i++)
         {
-            pathHositions[i] = pathPos[i].position;
+            pathPositions[i] = pathPos[i].position;
         }
-        return pathHositions;
+        pathPositions = Smoothing(pathPositions);
+        pathPositions = Smoothing(pathPositions);
+        pathPositions = Smoothing(pathPositions);
+
+        return pathPositions;
     }
 
+    Vector3[] Smoothing(Vector3[] path_Positons)
+    {
+        Vector3[] new_Path_Position = new Vector3[(path_Positons.Length - 2) * 2 + 2];
+        new_Path_Position[0] = path_Positons[0];
+        new_Path_Position[new_Path_Position.Length - 1] = path_Positons[path_Positons.Length - 1];
+        int j = 1;
+        for (int i = 0; i < path_Positons.Length - 2; i++)
+        {
+            new_Path_Position[j] = path_Positons[i] + (path_Positons[i + 1] - path_Positons[i]) * 0.75f;
+            new_Path_Position[j + 1] = path_Positons[i + 1] + (path_Positons[i + 2] - path_Positons[i + 1]) * 0.25f;
+            j += 2;
+
+        }
+        return new_Path_Position;
+    }
 
 }
